@@ -28,12 +28,13 @@ def findChineseFood() :
         # Check each menu item exluding the 1st (store name)
         for menuItem in store[1:]:
             if(_analyzeForChineseFood(menuItem)):
-                placesWithChineseFood.append(store[0])
+                if store[0] not in placesWithChineseFood:
+                    placesWithChineseFood.append(store[0])
             print(menuItem)
     print("PLACES WITH CHINESE FOOD: " + str(placesWithChineseFood))
 
 def _analyzeForChineseFood(menuItem) -> bool:
-    return 'Jack Daniels Burger' in menuItem
+    return 'Chinese' in menuItem
 
 def analyzePages() -> list:
     """
