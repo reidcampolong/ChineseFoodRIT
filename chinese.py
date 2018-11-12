@@ -1,7 +1,7 @@
 """"
-I love chinese food. I can never find any on campus..
+I love chinese food. I can never find any on campus.
 Running this program will search all the RIT dining locations and try
-to find me some delicious chinese food.
+to find you some delicious chinese food. Enjoy
 
 @author - Reid
 9/28/18
@@ -34,7 +34,7 @@ def findChineseFood() :
     print("PLACES WITH CHINESE FOOD: " + str(placesWithChineseFood))
 
 def _analyzeForChineseFood(menuItem) -> bool:
-    return 'Chinese' in menuItem
+    return 'Chinese' in menuItem or 'Asian' in menuItem or 'Stir Fry' in menuItem
 
 def analyzePages() -> list:
     """
