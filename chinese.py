@@ -4,7 +4,6 @@ Running this program will search all the RIT dining locations and try
 to find you some delicious chinese food. Enjoy
 
 @author - Reid
-9/28/18
 """
 
 from bs4 import BeautifulSoup
@@ -21,19 +20,27 @@ def findChineseFood() :
 
     # Store the pages we search in an array
     analyzedPages = analyzePages()
+
+    # Analyze each page
     for store in analyzedPages:
+        storeName = store[0]
+
         print("================")
-        print("LOCATION: " + store[0])
+        print("LOCATION: " + storeName)
         print("")
-        # Check each menu item exluding the 1st (store name)
+
+        # Print out menu for each location and add chinese food to list
         for menuItem in store[1:]:
-            if(_analyzeForChineseFood(menuItem)):
-                if store[0] not in placesWithChineseFood:
-                    placesWithChineseFood.append(store[0])
+            if isChineseFood(menuItem):
+                # We have found chinese food!
+                if storeName not in placesWithChineseFood:
+                    placesWithChineseFood.append(storeName)
             print(menuItem)
+
+    # Print out locations with chinese food
     print("PLACES WITH CHINESE FOOD: " + str(placesWithChineseFood))
 
-def _analyzeForChineseFood(menuItem) -> bool:
+def isChineseFood(menuItem) -> bool:
     return 'Chinese' in menuItem or 'Asian' in menuItem or 'Stir Fry' in menuItem
 
 def analyzePages() -> list:
@@ -73,9 +80,8 @@ def analyzePage(url) -> list:
     page_response = requests.get(url, timeout=2)
     page_content = BeautifulSoup(page_response.content, "html.parser")
 
-    locationName = str(page_content.find("title"))
-
     # Fancy up our location name to look nice
+    locationName = str(page_content.find("title"))
     locationName = _modifyForeignChars(locationName.replace("<title>", "")\
         .replace("</title>","").replace(" | Dining Services", ""))
 
@@ -102,6 +108,11 @@ def _analyzeItemFromMenuString(menu_item_string) -> str:
     return _modifyForeignChars(menuItem)
 
 def _modifyForeignChars(text) -> str:
+    """
+    Removes foreign characters from text
+    :param text:
+    :return:
+    """
     text = text.replace("<br/>", ", ")
     text = text.replace("&amp;", "&")
     return text
