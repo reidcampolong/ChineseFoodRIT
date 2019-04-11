@@ -41,7 +41,7 @@ def findChineseFood() :
     print("PLACES WITH CHINESE FOOD: " + str(placesWithChineseFood))
 
 def isChineseFood(menuItem) -> bool:
-    return 'Chinese' in menuItem or 'Asian' in menuItem or 'Stir Fry' in menuItem
+    return 'General Tso' in menuItem or 'Chinese' in menuItem or 'Asian' in menuItem or 'Stir Fry' in menuItem
 
 def analyzePages() -> list:
     """
