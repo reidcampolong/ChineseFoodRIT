@@ -10,6 +10,7 @@ This program solves that issue and searches ALL RIT dining locations for Chinese
 On the rare occasion of RIT having Chinese food, I present to you:
 ![Program](program.png)
 
+From the dining menu of April 11th, 2019
 ![Dining Page](diningpage.png)
 
 ## How it Works
