@@ -10,7 +10,7 @@ This program solves that issue and searches ALL RIT dining locations for Chinese
 On the rare occasion of RIT having Chinese food, I present to you:
 ![Program](program.png)
 
-![Dining Page](dining.png)
+![Dining Page](diningpage.png)
 
 ## How it Works
 1) Running the program will begin collecting URL links for each individual dining location from https://www.rit.edu/fa/diningservices/places-to-eat/hours.
